@@ -4,6 +4,10 @@
   "version": "0.0.1",
   "private": true,
   "description": "A curated directory of the best resources to discover China — for the curious world.",
+  "packageManager": "pnpm@10.33.2",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
