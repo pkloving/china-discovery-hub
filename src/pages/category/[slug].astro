@@ -5,7 +5,7 @@ import {
   getAllCategories,
   getResourcesByCategory,
 } from '../../lib/getResources';
-import { CATEGORY_SLUGS, type CategorySlug } from '../../content/config';
+import type { CategorySlug } from '../../content/config';
 
 export async function getStaticPaths() {
   const categories = await getAllCategories();
