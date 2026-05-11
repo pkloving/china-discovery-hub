@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 
 export default defineConfig({
-  site: 'https://chinadiscovery.xyz',
+  site: 'https://0ba56a1d-china-discovery-hub.pkloving.workers.dev',
   integrations: [
     tailwind({ applyBaseStyles: false }),
     sitemap(),
