@@ -32,3 +32,9 @@ pnpm-debug.log*
 
 # link-check report
 broken-links.json
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
