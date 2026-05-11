@@ -1,0 +1,66 @@
+---
+import '../styles/globals.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = 'China Discovery Hub',
+  description = 'A curated directory of the best resources to discover China — language, culture, food, travel, business, and beyond.',
+  ogImage = '/og/default.png',
+  noindex = false,
+} = Astro.props;
+
+const fullTitle =
+  title === 'China Discovery Hub' ? title : `${title} · China Discovery Hub`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://chinadiscovery.xyz');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL.toString()} />
+
+    {noindex && <meta name="robots" content="noindex" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL.toString()} />
+    <meta property="og:image" content={new URL(ogImage, canonicalURL).toString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <script is:inline>
+      (function () {
+        try {
+          var pref = localStorage.getItem('theme');
+          var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var useDark = pref === 'dark' || (!pref && systemDark);
+          if (useDark) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Header />
+    <main class="flex-1" data-pagefind-body={noindex ? undefined : ''}>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

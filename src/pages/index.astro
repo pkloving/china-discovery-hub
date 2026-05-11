@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import ResourceCard from '../components/ResourceCard.astro';
+import {
+  getAllCategories,
+  getAllResources,
+  getCategoryCounts,
+  getFeaturedResources,
+  getLatestResources,
+} from '../lib/getResources';
+
+const categories = await getAllCategories();
+const counts = await getCategoryCounts();
+const featured = await getFeaturedResources(6);
+const latest = await getLatestResources(8);
+const allResources = await getAllResources();
+
+const totalResources = allResources.length;
+const totalCategories = categories.length;
+
+const trendingTags = [
+  'visa', 'app', 'youtube', 'history', 'recipe', 'c-drama',
+  'ai', 'hanfu', 'tea', 'grammar', 'guochao', 'cantonese',
+];
+---
+
+<BaseLayout
+  title="China Discovery Hub"
+  description="A curated directory of the best resources to discover China — language, culture, food, travel, business, and beyond."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32">
+    <!-- Brush watermark -->
+    <span
+      class="pointer-events-none absolute -right-12 top-4 select-none font-brush text-[24rem] leading-none text-accent/[0.04] dark:text-accent/[0.08]"
+      aria-hidden="true"
+    >探</span>
+
+    <div class="container-page">
+      <div class="grid gap-12 lg:grid-cols-12 lg:items-center">
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-paper px-3 py-1 text-xs font-medium text-ink/70 dark:border-paper/15 dark:bg-paper-panel-dark/60 dark:text-paper/70">
+            <span class="inline-flex h-2 w-2 rounded-full bg-accent"></span>
+            <span>A new way to discover China — by curation, not algorithm.</span>
+          </div>
+
+          <h1 class="mt-6 font-serif text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+            Discover
+            <span class="relative inline-block">
+              <span class="relative z-10">China.</span>
+              <span class="absolute bottom-1 left-0 -z-0 h-2.5 w-full bg-accent/25"></span>
+            </span>
+          </h1>
+
+          <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink/75 dark:text-paper/75">
+            A curated directory of <strong class="font-semibold text-ink dark:text-paper">{totalResources}+ resources</strong>
+            to understand China — language, culture, food, travel, business and
+            everything between. For the curious world.
+          </p>
+
+          <div class="mt-9 flex flex-wrap items-center gap-3">
+            <a href="#categories" class="btn-primary">
+              Start Exploring
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+            </a>
+            <a href="/submit" class="btn-ghost">Submit a Resource</a>
+          </div>
+
+          <dl class="mt-12 grid grid-cols-3 gap-6 max-w-md">
+            <div>
+              <dt class="text-xs uppercase tracking-[0.16em] text-mute">Resources</dt>
+              <dd class="mt-1 font-serif text-3xl font-semibold">{totalResources}</dd>
+            </div>
+            <div>
+              <dt class="text-xs uppercase tracking-[0.16em] text-mute">Categories</dt>
+              <dd class="mt-1 font-serif text-3xl font-semibold">{totalCategories}</dd>
+            </div>
+            <div>
+              <dt class="text-xs uppercase tracking-[0.16em] text-mute">Languages</dt>
+              <dd class="mt-1 font-serif text-3xl font-semibold">2<span class="text-base align-top text-mute">+</span></dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="relative aspect-[4/5] max-w-sm mx-auto">
+            <!-- Stylized stacked cards -->
+            <div class="absolute inset-0 rounded-3xl bg-accent/10 rotate-[6deg]"></div>
+            <div class="absolute inset-0 rounded-3xl bg-accent-cool/15 -rotate-3"></div>
+            <div class="absolute inset-0 rounded-3xl border border-ink/10 bg-paper p-8 shadow-card dark:border-paper/10 dark:bg-paper-panel-dark">
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase tracking-[0.18em] text-mute">Featured</span>
+                <span class="seal h-7 w-7 rounded text-sm">探</span>
+              </div>
+              <p class="mt-6 font-brush text-6xl leading-none text-accent">中国</p>
+              <p class="mt-2 font-serif text-2xl font-semibold leading-tight">Curated, Multilingual, Open.</p>
+              <p class="mt-4 text-sm leading-relaxed text-ink/70 dark:text-paper/70">
+                Every resource hand-picked by editors and contributors.
+                Every entry checked for quality, accessibility, and longevity.
+              </p>
+              <div class="mt-6 flex flex-wrap gap-1.5">
+                <span class="chip">apps</span>
+                <span class="chip">history</span>
+                <span class="chip">recipes</span>
+                <span class="chip">c-drama</span>
+                <span class="chip">visa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section id="categories" class="scroll-mt-24 py-16">
+    <div class="container-page">
+      <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">01 — Browse by topic</p>
+          <h2 class="mt-2 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+            Eleven doorways in.
+          </h2>
+        </div>
+        <p class="max-w-md text-sm text-ink/70 dark:text-paper/70">
+          From learning Mandarin to navigating Shenzhen tech — pick where your curiosity lives and follow the rabbit hole.
+        </p>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {categories.map((c) => (
+          <CategoryCard category={c} count={counts[c.data.slug] ?? 0} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured -->
+  {featured.length > 0 && (
+    <section class="py-16">
+      <div class="container-page">
+        <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">02 — Editors' picks</p>
+            <h2 class="mt-2 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">Featured this week.</h2>
+          </div>
+          <a href="/featured" class="link-underline text-sm font-medium">View all featured →</a>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((r) => (
+            <ResourceCard resource={r} showCategory />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Trending tags -->
+  <section class="py-12">
+    <div class="container-page">
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">03 — Trending tags</p>
+      <div class="mt-5 flex flex-wrap gap-2">
+        {trendingTags.map((tag) => (
+          <a href={`/tag/${tag}`} class="chip text-sm">#{tag}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest -->
+  <section class="py-16">
+    <div class="container-page">
+      <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">04 — Just added</p>
+          <h2 class="mt-2 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">Latest additions.</h2>
+        </div>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {latest.map((r) => (
+          <ResourceCard resource={r} showCategory />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why this site / how to contribute -->
+  <section class="py-20">
+    <div class="container-page">
+      <div class="grid gap-12 md:grid-cols-2">
+        <div class="rounded-3xl border border-ink/[0.08] bg-paper p-8 dark:border-paper/10 dark:bg-paper-panel-dark/60">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-mute">Why this site exists</p>
+          <h3 class="mt-3 font-serif text-2xl font-semibold leading-tight">
+            "Curiosity outpaces the map."
+          </h3>
+          <p class="mt-4 text-sm leading-relaxed text-ink/75 dark:text-paper/70">
+            In early 2025, hundreds of thousands of "TikTok refugees" landed on
+            Xiaohongshu and discovered Chinese internet culture from the inside
+            for the first time. The world's curiosity is up — but quality
+            English-language entry points are still scattered across Reddit,
+            YouTube and obscure blogs.
+          </p>
+          <p class="mt-3 text-sm leading-relaxed text-ink/75 dark:text-paper/70">
+            China Discovery Hub is a single, calm doorway: <em>here are the
+            300+ resources we'd actually recommend a friend.</em>
+          </p>
+          <a href="/about" class="link-underline mt-5 inline-block text-sm font-medium">Read more about us →</a>
+        </div>
+
+        <div class="rounded-3xl border border-ink/[0.08] bg-paper p-8 dark:border-paper/10 dark:bg-paper-panel-dark/60">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-mute">Open & community-built</p>
+          <h3 class="mt-3 font-serif text-2xl font-semibold leading-tight">
+            Know a resource we're missing?
+          </h3>
+          <p class="mt-4 text-sm leading-relaxed text-ink/75 dark:text-paper/70">
+            Every entry on this site is a markdown file in a public GitHub repo.
+            Anyone — Mandarin learners, expats, Chinese internet natives, food
+            writers, history nerds — can submit a recommendation.
+          </p>
+          <ul class="mt-4 space-y-2 text-sm text-ink/75 dark:text-paper/70">
+            <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent shrink-0"></span> Submit via form (2 min) or GitHub PR</li>
+            <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent shrink-0"></span> Editorial review within 72h</li>
+            <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent shrink-0"></span> Open source, MIT-licensed content</li>
+          </ul>
+          <a href="/submit" class="btn-primary mt-6">Submit a resource</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

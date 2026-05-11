@@ -1,0 +1,65 @@
+---
+import { getAllCategories } from '../lib/getResources';
+const categories = await getAllCategories();
+const year = new Date().getFullYear();
+---
+
+<footer data-pagefind-ignore="all" class="mt-24 border-t border-ink/[0.06] bg-paper-panel/40 dark:border-paper/10 dark:bg-paper-panel-dark/40">
+  <div class="container-page py-14">
+    <div class="grid gap-10 md:grid-cols-12">
+      <div class="md:col-span-4">
+        <a href="/" class="inline-flex items-center gap-2.5">
+          <span class="seal h-8 w-8 rounded-md text-xl">探</span>
+          <span class="font-serif text-base font-semibold tracking-tight">China Discovery Hub</span>
+        </a>
+        <p class="mt-4 max-w-sm text-sm leading-relaxed text-ink/70 dark:text-paper/65">
+          A curated directory of resources to discover China — language, culture, food, travel,
+          business and beyond. Open source, community-driven, no tracking.
+        </p>
+        <p class="mt-6 text-xs text-mute">
+          We don't track you. No cookies, no ads, no analytics scripts in your browser.
+        </p>
+      </div>
+
+      <div class="md:col-span-5">
+        <h4 class="text-xs font-semibold uppercase tracking-[0.16em] text-mute">Browse</h4>
+        <ul class="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+          {categories.map((c) => (
+            <li>
+              <a
+                href={`/category/${c.slug}`}
+                class="text-ink/75 transition-colors hover:text-accent dark:text-paper/75"
+              >
+                <span class="mr-1">{c.data.emoji}</span>{c.data.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="md:col-span-3">
+        <h4 class="text-xs font-semibold uppercase tracking-[0.16em] text-mute">Project</h4>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li><a href="/about" class="text-ink/75 hover:text-accent dark:text-paper/75">About</a></li>
+          <li><a href="/submit" class="text-ink/75 hover:text-accent dark:text-paper/75">Submit a resource</a></li>
+          <li><a href="/featured" class="text-ink/75 hover:text-accent dark:text-paper/75">Featured stories</a></li>
+          <li>
+            <a
+              href="https://github.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-ink/75 hover:text-accent dark:text-paper/75"
+            >
+              GitHub ↗
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-col items-start gap-3 border-t border-ink/[0.06] pt-6 text-xs text-mute md:flex-row md:items-center md:justify-between dark:border-paper/10">
+      <span>© {year} China Discovery Hub. Made with care, not algorithms.</span>
+      <span class="font-zh">为世界了解中国，开一扇窗。</span>
+    </div>
+  </div>
+</footer>

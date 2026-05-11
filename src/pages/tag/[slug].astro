@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResourceCard from '../../components/ResourceCard.astro';
+import { getAllResources } from '../../lib/getResources';
+
+export async function getStaticPaths() {
+  const all = await getAllResources();
+  const tagSet = new Set<string>();
+  for (const r of all) {
+    for (const t of r.data.subTags) tagSet.add(t);
+  }
+  return Array.from(tagSet).map((tag) => ({
+    params: { slug: tag },
+    props: {
+      tag,
+      resources: all.filter((r) => r.data.subTags.includes(tag)),
+    },
+  }));
+}
+
+const { tag, resources } = Astro.props;
+---
+
+<BaseLayout title={`#${tag}`} description={`Resources tagged #${tag}`} noindex>
+  <section class="container-page py-16">
+    <nav class="mb-6 text-sm text-mute">
+      <a href="/" class="hover:text-accent">Home</a>
+      <span class="mx-2">/</span>
+      <span class="text-ink/70 dark:text-paper/70">Tag</span>
+    </nav>
+
+    <h1 class="font-serif text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+      <span class="text-accent">#</span>{tag}
+    </h1>
+    <p class="mt-3 text-sm text-mute">
+      {resources.length} {resources.length === 1 ? 'resource' : 'resources'}
+    </p>
+
+    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {resources.map((r) => <ResourceCard resource={r} showCategory />)}
+    </div>
+  </section>
+</BaseLayout>

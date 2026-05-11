@@ -1,0 +1,38 @@
+---
+import type { CategoryEntry } from '../lib/getResources';
+
+interface Props {
+  category: CategoryEntry;
+  count: number;
+}
+
+const { category, count } = Astro.props;
+const c = category.data;
+const slug = category.slug;
+---
+
+<a
+  href={`/category/${slug}`}
+  class="group relative flex h-full flex-col justify-between gap-4 rounded-2xl border border-ink/[0.08] bg-paper p-6 transition-all hover:-translate-y-1 hover:border-accent/40 hover:shadow-card-hover dark:border-paper/10 dark:bg-paper-panel-dark/60 dark:hover:border-accent/60"
+>
+  <div>
+    <div class="flex items-center justify-between">
+      <span class="text-3xl" aria-hidden="true">{c.emoji}</span>
+      <span class="text-xs font-medium text-mute">{count} {count === 1 ? 'resource' : 'resources'}</span>
+    </div>
+    <h3 class="mt-4 font-serif text-2xl font-semibold leading-tight tracking-tight">
+      {c.name}
+    </h3>
+    <p class="mt-0.5 font-zh text-sm text-mute">{c.nameZh}</p>
+    <p class="mt-3 text-sm leading-relaxed text-ink/70 dark:text-paper/65">
+      {c.tagline}
+    </p>
+  </div>
+
+  <span class="inline-flex items-center gap-1 text-sm font-medium text-accent transition-transform group-hover:translate-x-1">
+    Explore
+    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M5 12h14M13 5l7 7-7 7" />
+    </svg>
+  </span>
+</a>

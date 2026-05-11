@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResourceCard from '../../components/ResourceCard.astro';
+import {
+  getAllCategories,
+  getResourcesByCategory,
+} from '../../lib/getResources';
+import { CATEGORY_SLUGS, type CategorySlug } from '../../content/config';
+
+export async function getStaticPaths() {
+  const categories = await getAllCategories();
+  return categories.map((category) => ({
+    params: { slug: category.slug },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+const c = category.data;
+const catSlug = category.slug as CategorySlug;
+
+const resources = await getResourcesByCategory(catSlug);
+const featured = resources.filter((r) => r.data.featured);
+const rest = resources.filter((r) => !r.data.featured);
+
+// Sub-tag counts
+const subTagCounts: Record<string, number> = {};
+for (const r of resources) {
+  for (const t of r.data.subTags) {
+    subTagCounts[t] = (subTagCounts[t] ?? 0) + 1;
+  }
+}
+---
+
+<BaseLayout
+  title={`${c.name} — Resources to discover China`}
+  description={c.description}
+>
+  <!-- Hero -->
+  <section
+    data-pagefind-meta={`title:${c.name}`}
+    data-pagefind-filter={`category:${c.name}`}
+    class="border-b border-ink/[0.06] py-14 dark:border-paper/10"
+  >
+    <div class="container-page">
+      <nav class="mb-6 text-sm text-mute" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-accent">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/#categories" class="hover:text-accent">Categories</a>
+        <span class="mx-2">/</span>
+        <span class="text-ink/70 dark:text-paper/70">{c.name}</span>
+      </nav>
+
+      <div class="flex items-start gap-5">
+        <div class="hidden sm:flex shrink-0 h-16 w-16 items-center justify-center rounded-2xl bg-accent/10 text-4xl">
+          {c.emoji}
+        </div>
+        <div class="min-w-0 flex-1">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+            Category {String(c.order).padStart(2, '0')} / 11
+          </p>
+          <h1 class="mt-2 font-serif text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+            <span class="sm:hidden mr-2">{c.emoji}</span>{c.name}
+            <span class="ml-2 font-zh text-xl font-normal text-mute">· {c.nameZh}</span>
+          </h1>
+          <p class="mt-3 max-w-2xl text-lg italic text-ink/80 dark:text-paper/80">"{c.tagline}"</p>
+          <p class="mt-4 max-w-2xl text-base leading-relaxed text-ink/70 dark:text-paper/70">
+            {c.description}
+          </p>
+          <p class="mt-6 text-sm text-mute">
+            <strong class="font-semibold text-ink/80 dark:text-paper/80">{resources.length}</strong>
+            {resources.length === 1 ? 'resource' : 'resources'} curated
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sub-tag filter (static for now) -->
+  {c.subTags.length > 0 && (
+    <section class="border-b border-ink/[0.06] py-5 dark:border-paper/10">
+      <div class="container-page flex flex-wrap items-center gap-2">
+        <span class="mr-2 text-xs font-semibold uppercase tracking-[0.16em] text-mute">Filter:</span>
+        <a href={`/category/${catSlug}`} class="chip">All</a>
+        {c.subTags.map((tag) => (
+          subTagCounts[tag.slug] ? (
+            <a href={`/tag/${tag.slug}`} class="chip">
+              {tag.label}
+              <span class="text-mute">({subTagCounts[tag.slug]})</span>
+            </a>
+          ) : null
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Featured section -->
+  {featured.length > 0 && (
+    <section class="py-12">
+      <div class="container-page">
+        <h2 class="mb-6 flex items-center gap-2 font-serif text-2xl font-semibold tracking-tight">
+          <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gold/15 text-xs text-gold">★</span>
+          Featured
+        </h2>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((r) => <ResourceCard resource={r} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- All resources -->
+  <section class="py-12">
+    <div class="container-page">
+      {featured.length > 0 && (
+        <h2 class="mb-6 font-serif text-2xl font-semibold tracking-tight">All resources</h2>
+      )}
+      {rest.length > 0 ? (
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {rest.map((r) => <ResourceCard resource={r} />)}
+        </div>
+      ) : featured.length === 0 ? (
+        <div class="rounded-2xl border border-dashed border-ink/15 p-10 text-center dark:border-paper/15">
+          <p class="text-ink/70 dark:text-paper/70">No resources here yet — we're working on it.</p>
+          <a href="/submit" class="link-underline mt-3 inline-block text-sm font-medium">Suggest one →</a>
+        </div>
+      ) : null}
+    </div>
+  </section>
+</BaseLayout>

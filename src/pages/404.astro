@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Not Found" description="That page doesn't exist." noindex>
+  <section class="container-page py-24 text-center">
+    <p class="font-brush text-7xl text-accent">迷路了</p>
+    <h1 class="mt-6 font-serif text-4xl font-semibold tracking-tight">Lost in translation.</h1>
+    <p class="mt-4 text-ink/70 dark:text-paper/70">
+      The page you're looking for doesn't exist (or moved). Try the home page or pick a category below.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="/" class="btn-primary">Back home</a>
+      <a href="/#categories" class="btn-ghost">Browse categories</a>
+    </div>
+  </section>
+</BaseLayout>

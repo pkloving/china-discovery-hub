@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Submit a resource"
+  description="Recommend a website, app, channel, podcast or community for China Discovery Hub. Editorial review within 72 hours."
+>
+  <section class="container-page py-16">
+    <div class="max-w-prose">
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Submit</p>
+      <h1 class="mt-3 font-serif text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+        Recommend a resource.
+      </h1>
+      <p class="mt-5 text-lg leading-relaxed text-ink/75 dark:text-paper/70">
+        Know a brilliant Mandarin teacher's YouTube channel, an underrated regional
+        cooking blog, or the best Hanfu shop with international shipping? Tell us.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-2">
+      <!-- For developers -->
+      <div class="rounded-3xl border border-ink/[0.08] bg-paper p-8 dark:border-paper/10 dark:bg-paper-panel-dark/60">
+        <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-mute">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.7-2.8 5.7-5.5 6 .4.4.8 1 .8 2.1v3.2c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>
+          For developers
+        </div>
+        <h2 class="mt-3 font-serif text-2xl font-semibold leading-tight">Submit via GitHub PR</h2>
+        <p class="mt-3 text-sm leading-relaxed text-ink/75 dark:text-paper/70">
+          Fork the repo, run <code class="rounded bg-ink/[0.06] px-1.5 py-0.5 text-xs font-mono dark:bg-paper/[0.1]">pnpm new-resource</code>,
+          fill in the prompts, and open a PR. CI validates the schema and link automatically.
+        </p>
+        <pre class="mt-5 overflow-x-auto rounded-xl bg-ink p-4 text-xs leading-relaxed text-paper/90 dark:bg-paper-panel-dark"><code>git clone https://github.com/your-fork/china-discovery-hub
+cd china-discovery-hub
+pnpm install
+pnpm new-resource
+
+# Fill in the prompts, commit, push, open PR</code></pre>
+        <a
+          href="https://github.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary mt-6"
+        >
+          Go to GitHub repo ↗
+        </a>
+      </div>
+
+      <!-- For everyone -->
+      <div class="rounded-3xl border border-ink/[0.08] bg-paper p-8 dark:border-paper/10 dark:bg-paper-panel-dark/60">
+        <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-mute">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          For everyone
+        </div>
+        <h2 class="mt-3 font-serif text-2xl font-semibold leading-tight">Use the quick form</h2>
+        <p class="mt-3 text-sm leading-relaxed text-ink/75 dark:text-paper/70">
+          Two minutes. We review within 72 hours and reply to the email you leave if you want
+          credit (or to be told why we said no — sometimes a resource doesn't fit).
+        </p>
+
+        <form
+          class="mt-6 space-y-4"
+          name="resource-suggestion"
+          method="POST"
+          action="https://formspree.io/f/your-form-id"
+        >
+          <div>
+            <label for="url" class="block text-xs font-medium text-ink/80 dark:text-paper/80">Resource URL <span class="text-accent">*</span></label>
+            <input id="url" name="url" type="url" required placeholder="https://…" class="mt-1.5 block w-full rounded-lg border border-ink/15 bg-paper px-3 py-2 text-sm placeholder-mute focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent dark:border-paper/20 dark:bg-paper-panel-dark/60" />
+          </div>
+          <div>
+            <label for="name" class="block text-xs font-medium text-ink/80 dark:text-paper/80">Name</label>
+            <input id="name" name="name" type="text" placeholder="e.g. ChinesePod" class="mt-1.5 block w-full rounded-lg border border-ink/15 bg-paper px-3 py-2 text-sm placeholder-mute focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent dark:border-paper/20 dark:bg-paper-panel-dark/60" />
+          </div>
+          <div>
+            <label for="category" class="block text-xs font-medium text-ink/80 dark:text-paper/80">Best-fit category</label>
+            <select id="category" name="category" class="mt-1.5 block w-full rounded-lg border border-ink/15 bg-paper px-3 py-2 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent dark:border-paper/20 dark:bg-paper-panel-dark/60">
+              <option value="">— pick one —</option>
+              <option>Learn Chinese</option>
+              <option>Culture & History</option>
+              <option>Food & Cuisine</option>
+              <option>Travel</option>
+              <option>Living in China</option>
+              <option>Apps & Platforms</option>
+              <option>Entertainment</option>
+              <option>Business & Tech</option>
+              <option>Media & News</option>
+              <option>Diaspora</option>
+              <option>Subcultures</option>
+            </select>
+          </div>
+          <div>
+            <label for="why" class="block text-xs font-medium text-ink/80 dark:text-paper/80">Why is this worth listing?</label>
+            <textarea id="why" name="why" rows="3" placeholder="1–2 sentences. What makes it great." class="mt-1.5 block w-full rounded-lg border border-ink/15 bg-paper px-3 py-2 text-sm placeholder-mute focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent dark:border-paper/20 dark:bg-paper-panel-dark/60"></textarea>
+          </div>
+          <div>
+            <label for="email" class="block text-xs font-medium text-ink/80 dark:text-paper/80">Your email (optional)</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" class="mt-1.5 block w-full rounded-lg border border-ink/15 bg-paper px-3 py-2 text-sm placeholder-mute focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent dark:border-paper/20 dark:bg-paper-panel-dark/60" />
+          </div>
+          <button type="submit" class="btn-primary w-full sm:w-auto">Send suggestion</button>
+          <p class="text-xs text-mute">By submitting, you confirm the resource is publicly accessible and doesn't violate our editorial guidelines.</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Guidelines -->
+    <div class="mt-16 max-w-prose">
+      <h2 class="font-serif text-2xl font-semibold tracking-tight">Submission guidelines</h2>
+      <ul class="mt-5 space-y-3 text-sm leading-relaxed text-ink/75 dark:text-paper/70">
+        <li class="flex gap-3"><span class="mt-1.5 inline-block h-1.5 w-1.5 rounded-full bg-accent shrink-0"></span><span><strong class="text-ink dark:text-paper">Worth a friend's time.</strong> Imagine handing a smart, busy friend this single link. Would they thank you?</span></li>
+        <li class="flex gap-3"><span class="mt-1.5 inline-block h-1.5 w-1.5 rounded-full bg-accent shrink-0"></span><span><strong class="text-ink dark:text-paper">Substantive.</strong> Resource is a primary thing — not a clip aggregator, not pure SEO content.</span></li>
+        <li class="flex gap-3"><span class="mt-1.5 inline-block h-1.5 w-1.5 rounded-full bg-accent shrink-0"></span><span><strong class="text-ink dark:text-paper">Stable.</strong> Has been around 6+ months; not an unmaintained side project.</span></li>
+        <li class="flex gap-3"><span class="mt-1.5 inline-block h-1.5 w-1.5 rounded-full bg-accent shrink-0"></span><span><strong class="text-ink dark:text-paper">Family-friendly, non-political, non-promotional.</strong> No partisan takes, no NSFW, no crypto.</span></li>
+        <li class="flex gap-3"><span class="mt-1.5 inline-block h-1.5 w-1.5 rounded-full bg-accent shrink-0"></span><span><strong class="text-ink dark:text-paper">Accessible.</strong> Doesn't require an exotic VPN setup or a Chinese phone number, OR clearly flags when it does.</span></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

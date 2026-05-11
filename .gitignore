@@ -1,0 +1,34 @@
+# build output
+dist/
+.astro/
+
+# deps
+node_modules/
+
+# env
+.env
+.env.production
+.env.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# editor
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+.idea/
+.DS_Store
+
+# misc
+*.tsbuildinfo
+
+# local preview screenshots
+.preview/
+
+# link-check report
+broken-links.json

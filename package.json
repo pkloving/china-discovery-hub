@@ -1,0 +1,31 @@
+{
+  "name": "china-discovery-hub",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "description": "A curated directory of the best resources to discover China — for the curious world.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build && pagefind --site dist",
+    "build:astro": "astro build",
+    "build:index": "pagefind --site dist",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "check:links": "node scripts/check-links.mjs"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/mdx": "^4.0.3",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/tailwind": "^5.1.4",
+    "@tailwindcss/typography": "^0.5.15",
+    "astro": "^5.1.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "pagefind": "^1.5.2"
+  }
+}

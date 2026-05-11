@@ -1,0 +1,73 @@
+name: Suggest a new resource
+description: Recommend a website, app, podcast, channel or community we should list.
+title: "[Resource] "
+labels: ["new-resource"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing! Editorial review usually happens within 72 hours.
+        Read the [submission guidelines](https://github.com/${{ github.repository }}/blob/main/CONTRIBUTING.md) first.
+
+  - type: input
+    id: url
+    attributes:
+      label: Resource URL
+      placeholder: https://example.com
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Resource name
+      placeholder: e.g. Pleco
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Best-fit category
+      options:
+        - learn-chinese — Learn Chinese
+        - culture — Culture & History
+        - food — Food & Cuisine
+        - travel — Travel
+        - living — Living in China
+        - apps — Apps & Platforms
+        - entertainment — Entertainment
+        - business — Business & Tech
+        - media — Media & News
+        - diaspora — Diaspora & Chinatowns
+        - subculture — Subcultures & Trends
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Short description (max 220 chars)
+      description: One or two sentences. What it is, what makes it good.
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why does this belong on China Discovery Hub?
+      description: Help us understand what's special — accuracy, depth, accessibility, longevity, audience fit.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Quality checklist
+      options:
+        - label: The resource is publicly accessible (no walled gardens or private invites)
+          required: true
+        - label: Has been around at least 6 months and is actively maintained
+          required: true
+        - label: Family-friendly, non-political, non-promotional
+          required: true
+        - label: I have no undisclosed conflict of interest with this resource
+          required: true

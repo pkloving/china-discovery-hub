@@ -1,0 +1,37 @@
+name: Report a broken or outdated link
+description: Tell us a listed resource isn't working anymore.
+title: "[Broken] "
+labels: ["broken-link"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Resource URL on our site
+      placeholder: https://chinadiscovery.xyz/category/learn-chinese
+    validations:
+      required: true
+
+  - type: input
+    id: target
+    attributes:
+      label: The external URL that's broken
+      placeholder: https://example.com/the-broken-link
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What's wrong?
+      options:
+        - Returns 404 or other error
+        - Domain expired / for sale
+        - Redirects to unrelated content
+        - Content removed but domain still up
+        - Site exists but is no longer maintained
+        - Other (describe below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes (optional)
