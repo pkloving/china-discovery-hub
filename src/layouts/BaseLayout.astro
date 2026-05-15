@@ -62,5 +62,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://chinadis
       <slot />
     </main>
     <Footer />
+    <script
+      is:inline
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "cc7929af94b64dd9a8dc30ebd08de9e6"}'
+    ></script>
   </body>
 </html>
