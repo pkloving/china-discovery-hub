@@ -13,13 +13,21 @@ interface Props {
 const {
   title = 'China Discovery Hub',
   description = 'A curated directory of the best resources to discover China — language, culture, food, travel, business, and beyond.',
-  ogImage = '/og/default.png',
+  ogImage,
   noindex = false,
 } = Astro.props;
 
 const fullTitle =
   title === 'China Discovery Hub' ? title : `${title} · China Discovery Hub`;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://chinadiscovery.xyz');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://chinahub.cc');
+
+const ogRoute = (() => {
+  const stripped = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
+  if (!stripped) return 'index';
+  if (stripped.startsWith('tag/') || stripped === '404') return 'index';
+  return stripped;
+})();
+const resolvedOgImage = ogImage ?? `/og/${ogRoute}.png`;
 ---
 
 <!doctype html>
@@ -40,7 +48,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://chinadis
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL.toString()} />
-    <meta property="og:image" content={new URL(ogImage, canonicalURL).toString()} />
+    <meta property="og:image" content={new URL(resolvedOgImage, canonicalURL).toString()} />
+    <meta name="twitter:image" content={new URL(resolvedOgImage, canonicalURL).toString()} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
