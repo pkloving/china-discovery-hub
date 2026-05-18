@@ -8,6 +8,7 @@ interface Props {
   description?: string;
   ogImage?: string;
   noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -15,10 +16,16 @@ const {
   description = 'A curated directory of the best resources to discover China — language, culture, food, travel, business, and beyond.',
   ogImage,
   noindex = false,
+  jsonLd,
 } = Astro.props;
 
-const fullTitle =
-  title === 'China Discovery Hub' ? title : `${title} · China Discovery Hub`;
+const jsonLdBlocks = jsonLd
+  ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd])
+  : [];
+
+const fullTitle = /china discovery hub/i.test(title)
+  ? title
+  : `${title} · China Discovery Hub`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://chinahub.cc');
 
 const ogRoute = (() => {
@@ -41,6 +48,12 @@ const resolvedOgImage = ogImage ?? `/og/${ogRoute}.png`;
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL.toString()} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="China Discovery Hub — Latest resources"
+      href="/rss.xml"
+    />
 
     {noindex && <meta name="robots" content="noindex" />}
 
@@ -53,6 +66,14 @@ const resolvedOgImage = ogImage ?? `/og/${ogRoute}.png`;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
+
+    {jsonLdBlocks.map((block) => (
+      <script
+        type="application/ld+json"
+        is:inline
+        set:html={JSON.stringify(block)}
+      />
+    ))}
 
     <script is:inline>
       (function () {

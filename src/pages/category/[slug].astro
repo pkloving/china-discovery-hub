@@ -30,11 +30,48 @@ for (const r of resources) {
     subTagCounts[t] = (subTagCounts[t] ?? 0) + 1;
   }
 }
+
+const SITE = 'https://chinahub.cc';
+const pageUrl = `${SITE}/category/${catSlug}`;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': pageUrl,
+    url: pageUrl,
+    name: `${c.name} — China Discovery Hub`,
+    description: c.description,
+    inLanguage: 'en',
+    isPartOf: { '@id': `${SITE}/#website` },
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+        { '@type': 'ListItem', position: 2, name: 'Categories', item: `${SITE}/#categories` },
+        { '@type': 'ListItem', position: 3, name: c.name, item: pageUrl },
+      ],
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `${c.name} resources`,
+    numberOfItems: resources.length,
+    itemListElement: resources.map((r, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: r.data.url,
+      name: r.data.name,
+    })),
+  },
+];
 ---
 
 <BaseLayout
-  title={`${c.name} — Resources to discover China`}
-  description={c.description}
+  title={c.name}
+  description={`${c.tagline} ${c.description}`.slice(0, 300)}
+  jsonLd={jsonLd}
 >
   <!-- Hero -->
   <section
