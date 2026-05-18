@@ -1,0 +1,139 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResourceCard from '../../components/ResourceCard.astro';
+import { getAllResources, getAllCategories } from '../../lib/getResources';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('featured', ({ data }) => !data.draft);
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'featured'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const data = entry.data;
+
+const allResources = await getAllResources();
+const related = data.relatedResources
+  .map((slug) => allResources.find((r) => r.slug === slug))
+  .filter((r): r is NonNullable<typeof r> => Boolean(r));
+
+const categories = await getAllCategories();
+const relatedCats = data.relatedCategories
+  .map((slug) => categories.find((c) => c.slug === slug))
+  .filter((c): c is NonNullable<typeof c> => Boolean(c));
+
+const SITE = 'https://chinahub.cc';
+const pageUrl = `${SITE}/featured/${entry.slug}`;
+const ogImage = data.ogImage ?? `/og/featured/${entry.slug}.png`;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': pageUrl,
+    url: pageUrl,
+    headline: data.title,
+    description: data.dek,
+    image: new URL(ogImage, SITE).toString(),
+    datePublished: data.publishDate.toISOString(),
+    dateModified: (data.updatedDate ?? data.publishDate).toISOString(),
+    inLanguage: 'en',
+    author: { '@type': 'Organization', name: data.author },
+    publisher: { '@id': `${SITE}/#org` },
+    isPartOf: { '@id': `${SITE}/#website` },
+    keywords: data.tags.join(', '),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+      { '@type': 'ListItem', position: 2, name: 'Featured', item: `${SITE}/featured` },
+      { '@type': 'ListItem', position: 3, name: data.title, item: pageUrl },
+    ],
+  },
+];
+
+const publishDateLong = data.publishDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  ogImage={ogImage}
+  jsonLd={jsonLd}
+>
+  <article class="container-page py-12 lg:py-16">
+    <nav class="mb-8 text-sm text-mute" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-accent">Home</a>
+      <span class="mx-2">/</span>
+      <a href="/featured" class="hover:text-accent">Featured</a>
+    </nav>
+
+    <header class="mx-auto max-w-prose">
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Featured · {publishDateLong}</p>
+      <h1 class="mt-4 font-serif text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.25rem]">
+        {data.title}
+      </h1>
+      <p class="mt-6 font-serif text-xl italic leading-relaxed text-ink/75 dark:text-paper/75">
+        {data.dek}
+      </p>
+      <p class="mt-6 text-sm text-mute">
+        {data.author}
+        {data.readingTime && (
+          <>
+            <span class="mx-2">·</span>
+            {data.readingTime}
+          </>
+        )}
+      </p>
+    </header>
+
+    <div class="mx-auto mt-12 max-w-prose prose prose-lg prose-zinc dark:prose-invert prose-headings:font-serif prose-headings:tracking-tight prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-strong:text-ink dark:prose-strong:text-paper">
+      <Content />
+    </div>
+
+    {related.length > 0 && (
+      <section class="mx-auto mt-20 max-w-prose">
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Resources mentioned</p>
+        <h2 class="mt-2 font-serif text-2xl font-semibold tracking-tight">Worth bookmarking from this piece</h2>
+        <div class="mt-6 grid gap-5 sm:grid-cols-2">
+          {related.map((r) => <ResourceCard resource={r} showCategory />)}
+        </div>
+      </section>
+    )}
+
+    {relatedCats.length > 0 && (
+      <section class="mx-auto mt-16 max-w-prose">
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-mute">Keep exploring</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {relatedCats.map((c) => (
+            <a href={`/category/${c.slug}`} class="chip text-sm">
+              {c.data.emoji} {c.data.name}
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <footer class="mx-auto mt-20 max-w-prose border-t border-ink/[0.08] pt-8 dark:border-paper/10">
+      <p class="text-sm text-ink/70 dark:text-paper/70">
+        Found something we missed?{' '}
+        <a href="/submit" class="link-underline font-medium">Submit a resource</a>
+        {' '}— every entry gets editorial review.
+      </p>
+    </footer>
+  </article>
+</BaseLayout>

@@ -1,9 +1,13 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ResourceCard from '../components/ResourceCard.astro';
 import { getFeaturedResources } from '../lib/getResources';
 
 const featured = await getFeaturedResources(100);
+const stories = (await getCollection('featured', ({ data }) => !data.draft)).sort(
+  (a, b) => +b.data.publishDate - +a.data.publishDate,
+);
 
 const SITE = 'https://chinahub.cc';
 const jsonLd = {
@@ -13,7 +17,7 @@ const jsonLd = {
   url: `${SITE}/featured`,
   name: 'Featured — China Discovery Hub',
   description:
-    'Editor-selected, hand-picked resources currently on our recommended list.',
+    'Editor-written essays and hand-picked resources currently on our recommended list.',
   isPartOf: { '@id': `${SITE}/#website` },
   mainEntity: {
     '@type': 'ItemList',
@@ -31,7 +35,7 @@ const jsonLd = {
 
 <BaseLayout
   title="Featured"
-  description="Editor-selected, hand-picked resources currently on our recommended list."
+  description="Editor-written essays and hand-picked resources currently on our recommended list."
   jsonLd={jsonLd}
 >
   <section class="container-page py-16">
@@ -40,12 +44,56 @@ const jsonLd = {
       Editor-selected, hand-picked.
     </h1>
     <p class="mt-5 max-w-prose text-lg leading-relaxed text-ink/75 dark:text-paper/70">
-      These are the resources we'd send a friend who said: "I'm curious about
-      China — where do I even start?" Refreshed regularly.
+      These are the resources — and the essays — we'd send a friend who said:
+      "I'm curious about China — where do I even start?" Refreshed regularly.
     </p>
 
-    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {featured.map((r) => <ResourceCard resource={r} showCategory />)}
-    </div>
+    {stories.length > 0 && (
+      <section class="mt-16">
+        <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+          <h2 class="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">Stories</h2>
+          <p class="text-sm text-mute">Editor-written deep-dives.</p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {stories.map((story) => (
+            <a
+              href={`/featured/${story.slug}`}
+              class="group flex flex-col rounded-2xl border border-ink/[0.08] bg-paper p-6 shadow-card transition hover:-translate-y-0.5 hover:shadow-card-hover dark:border-paper/10 dark:bg-paper-panel-dark/60"
+            >
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
+                {story.data.publishDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                {story.data.readingTime && (
+                  <>
+                    <span class="mx-2 text-mute">·</span>
+                    <span class="text-mute">{story.data.readingTime}</span>
+                  </>
+                )}
+              </p>
+              <h3 class="mt-3 font-serif text-xl font-semibold leading-snug tracking-tight group-hover:text-accent">
+                {story.data.title}
+              </h3>
+              <p class="mt-3 text-sm leading-relaxed text-ink/70 dark:text-paper/70">
+                {story.data.dek}
+              </p>
+              <p class="mt-5 text-xs font-medium uppercase tracking-[0.16em] text-accent">
+                Read essay →
+              </p>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="mt-20">
+      <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <h2 class="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">Editor's picks</h2>
+        <p class="text-sm text-mute">{featured.length} hand-selected resources.</p>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {featured.map((r) => <ResourceCard resource={r} showCategory />)}
+      </div>
+    </section>
   </section>
 </BaseLayout>

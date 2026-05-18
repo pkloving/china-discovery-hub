@@ -55,4 +55,22 @@ const categories = defineCollection({
   }),
 });
 
-export const collections = { resources, categories };
+const featured = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().max(120),
+    dek: z.string().max(280),
+    description: z.string().max(220),
+    author: z.string().default('Editorial'),
+    publishDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    readingTime: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+    relatedResources: z.array(z.string()).default([]),
+    relatedCategories: z.array(z.enum(CATEGORY_SLUGS)).default([]),
+    draft: z.boolean().default(false),
+    ogImage: z.string().optional(),
+  }),
+});
+
+export const collections = { resources, categories, featured };

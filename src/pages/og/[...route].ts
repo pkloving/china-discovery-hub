@@ -1,7 +1,9 @@
 import { OGImageRoute } from 'astro-og-canvas';
+import { getCollection } from 'astro:content';
 import { getAllCategories } from '../../lib/getResources';
 
 const categories = await getAllCategories();
+const stories = await getCollection('featured', ({ data }) => !data.draft);
 
 const staticPages: Record<string, { title: string; description: string }> = {
   index: {
@@ -37,7 +39,17 @@ const categoryPages = Object.fromEntries(
   ]),
 );
 
-const pages = { ...staticPages, ...categoryPages };
+const storyPages = Object.fromEntries(
+  stories.map((s) => [
+    `featured/${s.slug}`,
+    {
+      title: s.data.title,
+      description: s.data.dek,
+    },
+  ]),
+);
+
+const pages = { ...staticPages, ...categoryPages, ...storyPages };
 
 export const { getStaticPaths, GET } = await OGImageRoute({
   param: 'route',

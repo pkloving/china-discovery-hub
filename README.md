@@ -37,20 +37,34 @@ pnpm preview    # 预览构建产物
 
 需要 Node 18+ 和 pnpm 9+。
 
-## 添加一条资源
+## 贡献内容
 
-在 `src/content/resources/<category>/<slug>.md` 新建文件，按已有条目的 frontmatter 格式填写。Schema 由 `src/content/config.ts` 用 Zod 强校验，少字段或类型错误 build 会直接失败。
+**添加一条资源**：在 `src/content/resources/<category>/<slug>.md` 新建文件，按已有条目的 frontmatter 格式填写。
+
+**写一篇 Featured 长文**：在 `src/content/featured/<slug>.md` 新建 markdown，frontmatter 字段见 `src/content/config.ts`（`title` / `dek` / `description` / `publishDate` / `relatedResources` / `relatedCategories` 等）。文章发布在 `/featured/<slug>`，自动生成 OG 图与 Article 结构化数据。
+
+Schema 由 `src/content/config.ts` 用 Zod 强校验，少字段或类型错误 build 会直接失败。
 
 ## 当前状态
 
-Sprint 0–2 完成：
+正式上线：**[chinahub.cc](https://chinahub.cc)**，Cloudflare Pages 全球边缘节点。
+
+已完成：
 - ✅ Astro 5 + Tailwind 3 + Content Collections 脚手架
-- ✅ 11 个分类元信息 + **60 条种子资源**
+- ✅ 11 个分类元信息 + **72 条精选资源**（持续扩充中）
 - ✅ 首页 / 分类页 / 标签页 / Featured / Submit / About / Search / 404
 - ✅ 暗色模式（首屏无闪烁）
-- ✅ Sitemap + 多语言路由骨架
 - ✅ **Pagefind 静态搜索**（构建期生成 wasm 索引，含分类 facet 过滤）
-- ⏳ OG 图自动生成（Sprint 3）
-- ⏳ Cloudflare Pages 部署 + CI（Sprint 3）
+- ✅ **OG 图自动生成**（astro-og-canvas，每页 + 每分类 + 每篇长文）
+- ✅ **SEO 基础件**：sitemap、robots.txt、RSS feed、JSON-LD 结构化数据（WebSite + SearchAction + CollectionPage + ItemList + Article + BreadcrumbList）
+- ✅ **Featured 长文** 内容集合 + `/featured/[slug]` 详情页
+- ✅ Cloudflare Pages 部署 + GitHub Actions CI（含周度链接巡检）
+- ✅ Cloudflare Web Analytics 已接入
+
+后续路线：
+- ⏳ i18n zh-CN 真正落地（路由骨架已就绪）
+- ⏳ Newsletter 接入
+- ⏳ Creators 独立分类
+- ⏳ 更多 Featured 长文
 
 详细路线图见 [ARCHITECTURE.md §10](./ARCHITECTURE.md#10-实施路线图)。
