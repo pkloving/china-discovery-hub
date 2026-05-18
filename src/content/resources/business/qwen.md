@@ -1,6 +1,6 @@
 ---
 name: Qwen (Alibaba)
-url: https://qwen.aliyun.com/
+url: https://chat.qwen.ai/
 description: Alibaba's open-weights LLM family — the other major open Chinese frontier model alongside DeepSeek, with strong multilingual and code variants.
 category: business
 subTags: [ai, open-source]

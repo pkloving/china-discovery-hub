@@ -1,6 +1,6 @@
 ---
 name: Xiaohongshu (RedNote)
-url: https://www.xiaohongshu.com/
+url: https://www.xiaohongshu.com/explore
 description: The Instagram-meets-Yelp super-app that briefly absorbed "TikTok refugees" in 2025. Now the leading lifestyle search engine in China — food, fashion, travel, reviews.
 category: apps
 subTags: [social, lifestyle]
