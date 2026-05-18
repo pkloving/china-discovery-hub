@@ -78,7 +78,11 @@ async function fetchOnce(url, method) {
 
 function classify(status) {
   if (status >= 200 && status < 400) return 'ok';
-  if (status === 403 || status === 429) return 'inconclusive';
+  // 402/403/405/429 all mean "server responded but rejected the request shape" —
+  // typically CDN bot-detection (Cloudflare/Akamai) at the edge, not a real
+  // broken link. 405 specifically means the server is alive and responding,
+  // just doesn't like our HTTP method. Treat all four as inconclusive.
+  if ([402, 403, 405, 429].includes(status)) return 'inconclusive';
   if (status >= 500) return 'server-error';
   return 'broken';
 }
