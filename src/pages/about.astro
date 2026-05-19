@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="About"
-  description="China Discovery Hub is a curated, open-source directory built to give the world a calmer doorway into Chinese language, culture and life."
+  description="China Discovery Hub is a hand-curated, open-source directory of the best resources to discover China — built as a calmer doorway for the curious world."
 >
   <article class="container-page py-16 max-w-prose">
     <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">About</p>
@@ -12,7 +12,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       A calmer doorway into China.
     </h1>
 
-    <div class="prose dark:prose-invert prose-headings:font-serif prose-headings:tracking-tight max-w-none mt-10">
+    <div class="prose dark:prose-invert prose-headings:font-serif prose-headings:tracking-tight max-w-none mt-10 prose-a:text-accent prose-a:no-underline hover:prose-a:underline">
       <p>
         In January 2025, hundreds of thousands of "TikTok refugees" landed on
         Xiaohongshu (RedNote). For the first time, ordinary internet users
@@ -27,13 +27,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         scattered. A great Cantonese cooking channel here. A grammar wiki
         there. A long-form China podcast somewhere on a forum. Wikipedia
         articles that assume you already know things. Reddit threads that get
-        buried.
+        buried within a week.
       </p>
 
       <p>
         <strong>China Discovery Hub</strong> is a single, calm directory of
-        the resources we'd actually hand a curious friend. Hand-picked by
-        editors. Open to community submissions. No tracking, no algorithm.
+        the resources we'd actually hand a curious friend. Hand-picked.
+        Open to community submissions. No tracking, no algorithm,
+        no signup.
+      </p>
+
+      <p>
+        If you want the longer story behind the project — what was cut,
+        what we got wrong, why hand-curation can do what algorithms can't —
+        read{' '}
+        <a href="/featured/building-china-discovery-hub">the founding essay</a>.
       </p>
 
       <h2>What we curate</h2>
@@ -69,30 +77,102 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           clearly so readers know what they're getting into.
         </li>
         <li>
-          <strong>No paid placement.</strong> Featured slots are editorial
-          choices, not advertisements. If that ever changes, it will be
-          labeled prominently and there will be a public ledger.
+          <strong>Editorial picks are not advertisements.</strong> Featured
+          slots are chosen by editors. If we ever experiment with affiliate
+          links on commercial resources, or with clearly-labeled sponsored
+          listings, that will be disclosed prominently and never disguised
+          as editorial.
         </li>
         <li>
           <strong>Open source.</strong> The site, its content, and its build
-          process are all public on GitHub.
+          process are all public on GitHub. Every resource is a markdown
+          file anyone can read, audit or improve.
         </li>
       </ol>
 
+      <h2>Frequently asked</h2>
+
+      <h3>How is this different from Wikipedia?</h3>
+      <p>
+        Wikipedia is comprehensive and neutral. We're opinionated and
+        compact. The job here is to say <em>"if you only have time for one
+        thing in food, watch Chinese Cooking Demystified"</em> — something a
+        neutrality-bound encyclopedia structurally can't do.
+      </p>
+
+      <h3>Why no individual creators or YouTubers as standalone entries?</h3>
+      <p>
+        Sites and institutions are different in character from personal
+        voices, and putting one creator's YouTube channel next to a museum
+        collection flattens both. A dedicated <em>Creators</em> section is
+        planned. For now, individual creators get name-dropped inside
+        editorial essays rather than listed as directory entries.
+      </p>
+
+      <h3>How do you handle politically sensitive resources?</h3>
+      <p>
+        "Balanced China coverage" is itself politically loaded — every
+        editorial choice is read as a position. We try to include resources
+        from multiple credible perspectives (PRC, diaspora, Hong Kong, Taiwan,
+        Western academia, independent analysts) rather than picking a
+        side. We <em>do</em> exclude outright propaganda from any direction.
+      </p>
+
+      <h3>How do you keep the directory up to date?</h3>
+      <p>
+        A weekly GitHub Action runs a link checker across every URL on the
+        site. Broken links are filed as issues and fixed before deploy.
+        Beyond that, every change goes through editorial review — community
+        submissions and PRs included.
+      </p>
+
+      <h3>Can I suggest a resource or fix something?</h3>
+      <p>
+        Yes — please. Use the{' '}
+        <a href="/submit">submit form</a>{' '}
+        for the easy path, or open a PR / issue at{' '}
+        <a href="https://github.com/pkloving/china-discovery-hub" rel="noopener noreferrer">
+          github.com/pkloving/china-discovery-hub
+        </a>{' '}
+        if you're already on GitHub.
+      </p>
+
       <h2>Who's behind this</h2>
       <p>
-        A small group of contributors who all spent time learning Mandarin,
-        living in or visiting China, working with Chinese teams, or just
-        loving the food too much. We're building this in the open as a public
-        good — if it earns coffee money via newsletter sponsorships someday,
-        great; if not, it's still worth doing.
+        Built and currently edited by{' '}
+        <a href="https://github.com/pkloving" rel="noopener noreferrer">
+          pkloving on GitHub
+        </a>{' '}
+        — a Mandarin learner with a bookmark-folder problem. The plan is to
+        grow into a small editorial group over time; for now, every entry
+        and every essay on the site goes through one editor's hands. PRs and
+        critical feedback from people who know corners of China better than
+        I do are very welcome.
+      </p>
+
+      <h2>How the site is built</h2>
+      <p>
+        Astro 5 + Tailwind, with every resource as a markdown file in a
+        public GitHub repo. Search runs entirely in your browser via{' '}
+        <a href="https://pagefind.app/" rel="noopener noreferrer">Pagefind</a>
+        {' '}— no backend, no database, no API calls. Hosted on Cloudflare
+        Pages for global edge delivery.
+      </p>
+
+      <h3>Privacy</h3>
+      <p>
+        We use Cloudflare Web Analytics (no cookies, no fingerprinting, no
+        cross-site tracking) and that's the entire telemetry stack. No
+        accounts. No newsletter pop-ups. No retargeting pixels. If you spot
+        anything that looks like tracking on this site, please open an
+        issue — it shouldn't be there.
       </p>
 
       <h2>Contact</h2>
       <p>
-        Send corrections, recommendations or partnership ideas via the
-        <a href="/submit">submit form</a>, the GitHub repo, or open an issue
-        on any specific resource.
+        Send corrections, recommendations or partnership ideas via the{' '}
+        <a href="/submit">submit form</a>, or open an issue / PR on the
+        GitHub repo.
       </p>
     </div>
   </article>
