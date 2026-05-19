@@ -20,7 +20,7 @@
 ## 一句话技术栈
 
 **Astro + Tailwind + Markdown 内容集合 + Pagefind 搜索 + Cloudflare Pages**
-—— 完全静态、海外边缘加速、年成本 < $200、社区可 PR 贡献。
+—— 完全静态、海外边缘加速、年成本 < $200。**个人维护的编辑项目，源代码公开但不接受 PR**（建议走 Issue 或站内 submit 表单提建议）。
 
 ## 内容分类（11 个一级类目）
 
@@ -37,13 +37,21 @@ pnpm preview    # 预览构建产物
 
 需要 Node 18+ 和 pnpm 9+。
 
-## 贡献内容
+## 编辑工作流（维护者自用）
 
 **添加一条资源**：在 `src/content/resources/<category>/<slug>.md` 新建文件，按已有条目的 frontmatter 格式填写。
 
 **写一篇 Featured 长文**：在 `src/content/featured/<slug>.md` 新建 markdown，frontmatter 字段见 `src/content/config.ts`（`title` / `dek` / `description` / `publishDate` / `relatedResources` / `relatedCategories` 等）。文章发布在 `/featured/<slug>`，自动生成 OG 图与 Article 结构化数据。
 
 Schema 由 `src/content/config.ts` 用 Zod 强校验，少字段或类型错误 build 会直接失败。
+
+## 外部建议渠道
+
+读者推荐资源或报错走两条路：
+- [chinahub.cc/submit](https://chinahub.cc/submit) 站内表单
+- 仓库 [Issue](https://github.com/pkloving/china-discovery-hub/issues)
+
+PR 不会合并（个人编辑项目），但 Issue 都会读。详见 [CONTRIBUTING.md](./CONTRIBUTING.md)。
 
 ## 当前状态
 

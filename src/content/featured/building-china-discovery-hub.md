@@ -61,7 +61,7 @@ For honesty: things I considered including and chose not to.
 
 For anyone curious about the boring parts: it's Astro, Tailwind, and a folder of markdown files in a public GitHub repo. Every resource is a `.md` file with frontmatter. Search runs entirely client-side via Pagefind — no database, no backend. Hosted on Cloudflare Pages for around $0/year.
 
-The repo is at [github.com/pkloving/china-discovery-hub](https://github.com/pkloving/china-discovery-hub). If you know a resource I'm missing — and I am definitely missing some — open a PR or use the [submit form](/submit). Every entry currently on the site went through editorial review; community submissions will too, but they're encouraged.
+The repo is at [github.com/pkloving/china-discovery-hub](https://github.com/pkloving/china-discovery-hub). If you know a resource I'm missing — and I am definitely missing some — use the [submit form](/submit) or open an Issue on the repo. The site is a personal editorial project, so PRs aren't merged; every suggestion goes through one set of editorial hands and either gets added or politely declined.
 
 ## What I'd like this to grow into
 

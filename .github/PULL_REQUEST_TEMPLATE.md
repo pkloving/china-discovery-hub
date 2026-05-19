@@ -1,27 +1,26 @@
 <!--
-Thanks for contributing! A few quick checks:
+Hi — thanks for taking the time to look at this.
 
-1. Does the resource meet the criteria in CONTRIBUTING.md?
-2. Is it placed in the right category folder under `src/content/resources/`?
-3. Does `pnpm check && pnpm build` pass locally?
+This repo is a personal editorial project. Pull requests aren't merged,
+even when the change is good, because every entry on the site needs to
+pass through one set of editorial hands for tone and curation consistency.
 
-Editorial review typically happens within 72 hours.
+Two channels that DO get acted on:
+
+1. Open an Issue with what you'd like changed or added:
+   https://github.com/pkloving/china-discovery-hub/issues/new
+
+2. Use the submit form at https://chinahub.cc/submit
+   (no GitHub account needed)
+
+If you've already done the work locally and just want me to see it,
+linking your fork in an Issue is the easiest way.
+
+— pkloving
 -->
 
-## What this PR does
-<!-- One sentence. e.g. "Adds Pleco to the Learn Chinese category." -->
+## Heads up: this repo does not accept Pull Requests
 
-## Resource details (for new resources)
-
-- **Name:**
-- **URL:**
-- **Category:**
-- **Why it belongs here (1-2 sentences):**
-
-## Checklist
-
-- [ ] Resource is publicly accessible and actively maintained
-- [ ] Frontmatter follows the Zod schema (see `src/content/config.ts`)
-- [ ] `pnpm check` passes
-- [ ] `pnpm build` passes
-- [ ] No conflict of interest with this resource (or disclosed below)
+The site is a personal editorial project — please open an
+[Issue](https://github.com/pkloving/china-discovery-hub/issues/new) or
+use the [submit form](https://chinahub.cc/submit) instead.

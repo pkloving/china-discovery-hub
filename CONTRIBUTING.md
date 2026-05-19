@@ -1,101 +1,67 @@
-# Contributing to China Discovery Hub
+# Suggesting to China Discovery Hub
 
-Thanks for considering a contribution! This project lives or dies on the
-quality of its curation. Everything here is a public good — content under
-MIT license, site code open-source.
+This is a personal editorial project. The site source is public on GitHub
+for transparency, but every entry passes through one set of editorial
+hands. I read every suggestion that comes in.
 
-## What we list
+**Pull requests aren't merged.** What works instead: opening an Issue, or
+using the submit form on the site.
 
-The bar is **"would a busy friend thank you for this single link?"**. We list:
+## What gets listed
+
+The bar is **"would a busy friend thank you for this single link?"**:
 
 - ✅ Apps, websites, podcasts, YouTube channels, communities, museums, official portals
-- ✅ Resources that are accessible to non-Chinese-speaking audiences
-  (or clearly flagged when they're not)
+- ✅ Resources accessible to non-Chinese-speaking audiences (or clearly flagged when they're not)
 - ✅ Things that have been around at least 6 months and are actively maintained
 
-We don't list:
+What doesn't:
 
-- ❌ Walled gardens, private Discords, paid-only platforms without a free trial
+- ❌ Walled gardens, private Discords, paid-only platforms without a preview
 - ❌ Pure aggregators with no original content
 - ❌ Politically partisan content (from any direction)
 - ❌ NSFW, crypto, gambling, MLM, conspiracy content
-- ❌ Promotional listings (we don't take paid placements)
+- ❌ Self-promotional listings without editorial value
 
-## How to add a resource
+## How to suggest a resource
 
-### Option 1 — via GitHub issue (no coding required)
+Pick one:
 
-Open a [new resource issue](../../issues/new?template=new-resource.yml).
-Fill in the form. Editorial team will review and add it within ~72 hours.
+1. **The submit form** at [chinahub.cc/submit](https://chinahub.cc/submit) —
+   takes two minutes, no GitHub account needed.
+2. **A GitHub Issue** at
+   [pkloving/china-discovery-hub/issues](https://github.com/pkloving/china-discovery-hub/issues) —
+   include the URL, suggested category, and one or two sentences on why
+   it's worth listing.
 
-### Option 2 — via Pull Request (recommended for contributors)
+Either way: I read every one, reply if you leave an email, and either
+add the resource or politely explain why it doesn't fit.
 
-1. **Fork & clone** this repo.
-2. **Install deps:** `pnpm install` (requires Node 20+ and pnpm 10+)
-3. **Create a markdown file** under the right category folder:
-   ```
-   src/content/resources/<category-slug>/<resource-slug>.md
-   ```
-4. **Copy this frontmatter template** and fill it in:
+## How to report a broken link or factual error
 
-   ```markdown
-   ---
-   name: Resource Name
-   url: https://example.com/
-   description: 1-2 sentences, max 220 chars. What it is + what makes it good.
-   category: learn-chinese  # see config.ts for valid values
-   subTags: [tag-one, tag-two]
-   languagesSupported: [en, zh]
-   pricing: free  # or 'freemium' or 'paid'
-   featured: false  # editors only
-   accessibleOutsideChina: true
-   requiresVpnFromChina: false
-   addedDate: 2026-05-11
-   submittedBy: your-github-handle
-   ---
-
-   1-2 paragraphs of context. Why is this resource worth listing? What kind
-   of user is it for? What's its specific strength relative to others in
-   the same niche?
-   ```
-
-5. **Validate locally:**
-   ```bash
-   pnpm check     # type-check + Zod schema validation
-   pnpm build     # full build + Pagefind index
-   ```
-6. **Open a PR.** CI will re-run validation and build a preview.
-
-The Zod schema in `src/content/config.ts` enforces required fields; if you
-miss something, `pnpm check` will tell you exactly which line and field.
+Same channels as above. A GitHub Issue with the URL of the affected entry
+and what's wrong is the fastest path.
 
 ## How the site is built
 
-- **Astro 5** as the static site generator (no JS shipped by default)
+For the curious:
+
+- **Astro 5** static site generator (zero JS on most pages)
 - **Tailwind CSS 3** for styling
-- **Markdown + Content Collections** for everything you can edit
-- **Pagefind** for static, no-backend search
+- **Markdown + Content Collections** for every resource and essay
+- **Pagefind** for in-browser search (no backend)
 - **Cloudflare Pages** for hosting
 
 See [ARCHITECTURE.md](./ARCHITECTURE.md) for the full design rationale.
 
 ## Editorial principles
 
-1. **Cultural first, political second.** We don't take sides on geopolitics.
-2. **Quality before quantity.** Every entry must be something a busy friend
-   would thank you for.
-3. **Accessible to outsiders.** If a resource requires fluent Mandarin or a
-   Chinese mobile number, flag that clearly.
-4. **No paid placement.** Featured slots are editorial. If this ever changes
-   it will be labeled prominently and tracked in a public ledger.
-5. **Open source.** Site code MIT-licensed, content CC-BY-4.0 (by submission
-   you agree to this licensing).
-
-## Code of conduct
-
-Be kind. Disagreements about cuisine, dialect, traditional/simplified, or
-which Wong Kar-wai film is best — welcome. Personal attacks — not.
-
-## Questions
-
-Open a [Discussion](../../discussions) or DM @editorial in PR comments.
+1. **Cultural first, political second.** No sides on geopolitics.
+2. **Quality before quantity.** Every entry must earn its slot.
+3. **Accessible to outsiders.** Flag when a resource needs fluent Mandarin
+   or a Chinese phone number.
+4. **Editorial picks are not advertisements.** If any affiliate links or
+   sponsored slots appear in future, they'll be clearly labeled and
+   never disguised as editorial.
+5. **Source open, decisions personal.** The code and content are public on
+   GitHub; the editorial calls are made by one person.
