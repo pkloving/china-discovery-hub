@@ -79,10 +79,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </li>
         <li>
           <strong>Editorial picks are not advertisements.</strong> Featured
-          slots are chosen by editors. If we ever experiment with affiliate
-          links on commercial resources, or with clearly-labeled sponsored
-          listings, that will be disclosed prominently and never disguised
-          as editorial.
+          slots are chosen by editors. Long-form Featured essays contain
+          affiliate links to commercial resources we'd recommend anyway —
+          disclosed in full <a href="#affiliate-disclosure">below</a> and
+          never disguised as editorial. The 70+ directory entries on
+          category pages are plain links, no affiliate, no commission.
         </li>
         <li>
           <strong>Open source.</strong> The site, its content, and its build
@@ -164,11 +165,52 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <h3>Privacy</h3>
       <p>
-        We use Cloudflare Web Analytics (no cookies, no fingerprinting, no
-        cross-site tracking) and that's the entire telemetry stack. No
-        accounts. No newsletter pop-ups. No retargeting pixels. If you spot
-        anything that looks like tracking on this site, please open an
-        issue — it shouldn't be there.
+        On every page we use Cloudflare Web Analytics — cookieless, no
+        fingerprinting, no cross-site tracking. That's it. No accounts, no
+        newsletter pop-ups, no retargeting pixels, no Google Analytics.
+      </p>
+      <p>
+        On Featured long-form essays only, we additionally load{' '}
+        <a href="https://skimlinks.com/" rel="noopener noreferrer">Skimlinks</a>,
+        which rewrites outbound links to participating merchants into
+        affiliate links. See the disclosure below for what that means and
+        which pages it applies to. If you spot tracking anywhere outside
+        these two systems, please open an issue — it shouldn't be there.
+      </p>
+
+      <h2 id="affiliate-disclosure">Affiliate disclosure</h2>
+      <p>
+        <strong>Where affiliate links appear:</strong> only on Featured
+        long-form essays (URLs starting with <code>/featured/</code>). The
+        directory pages — home, every category, every individual resource
+        card — contain plain editorial links, with no affiliate tracking
+        and no commission to this site.
+      </p>
+      <p>
+        <strong>How it works:</strong> Featured essays load Skimlinks, a
+        third-party service that detects links to participating merchants
+        (e.g. Trip.com, Klook, Booking, language-learning platforms) and
+        rewrites them so that purchases earn this site a small commission
+        at no extra cost to you. We never know who you are, only that
+        someone clicking through eventually bought something.
+      </p>
+      <p>
+        <strong>What it does not change:</strong> editorial selection.
+        Whether or not a resource has an affiliate program is not a
+        factor in deciding to recommend it. Many of the most-recommended
+        resources on this site (Pleco, Sinocism, Fuchsia Dunlop, museum
+        collections, government visa pages) have no affiliate program at
+        all and never will pay a cent. They're in here because they're
+        the best — same standard applies to the ones that do happen to
+        pay commission.
+      </p>
+      <p>
+        <strong>If you'd rather opt out:</strong> reading the essays on
+        the main directory pages (which have no affiliate code) and
+        copying the resource name into your browser bypasses Skimlinks
+        entirely. Or use a privacy extension that blocks{' '}
+        <code>skimresources.com</code> — the site continues to work
+        normally.
       </p>
 
       <h2>Contact</h2>

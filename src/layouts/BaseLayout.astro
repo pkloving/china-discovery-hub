@@ -9,6 +9,7 @@ interface Props {
   ogImage?: string;
   noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  enableAffiliate?: boolean;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
   ogImage,
   noindex = false,
   jsonLd,
+  enableAffiliate = false,
 } = Astro.props;
 
 const jsonLdBlocks = jsonLd
@@ -98,5 +100,12 @@ const resolvedOgImage = ogImage ?? `/og/${ogRoute}.png`;
       src="https://static.cloudflareinsights.com/beacon.min.js"
       data-cf-beacon='{"token": "cc7929af94b64dd9a8dc30ebd08de9e6"}'
     ></script>
+    {import.meta.env.PROD && enableAffiliate && (
+      <script
+        is:inline
+        async
+        src="https://s.skimresources.com/js/303361X1791406.skimlinks.js"
+      ></script>
+    )}
   </body>
 </html>
