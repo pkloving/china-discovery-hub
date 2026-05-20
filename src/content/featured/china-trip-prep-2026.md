@@ -1,101 +1,110 @@
 ---
 title: "Before you fly to China: what I'd hand a foreign friend the week before their first trip (2026)"
 dek: "Most China travel advice in English is either three years out of date or written by people who've never lived here. This is the prep list I now send friends a week before they land — phone, money, apps, and the etiquette no airport pamphlet will mention."
-description: "An insider 2026 prep guide for foreigners landing in China: eSIM and VPN setup, payment apps, booking Trip.com for high-speed rail, visa-free policies, and the small unwritten things that make a trip work."
-author: "Editorial"
+description: 'An insider 2026 prep guide for foreigners landing in China: eSIM and VPN setup, payment apps, booking Trip.com for high-speed rail, visa-free policies, and the small unwritten things that make a trip work.'
+author: 'Editorial'
 publishDate: 2026-05-20
-readingTime: "10 min read"
-tags: [travel, prep-guide, wechat, alipay, esim, vpn, high-speed-rail, visa-free]
-relatedResources: [wechat, alipay, amap-international, trip-com, klook, china-visa-policies, visit-shanghai]
+readingTime: '10 min read'
+tags:
+  [travel, prep-guide, wechat, alipay, esim, vpn, high-speed-rail, visa-free]
+relatedResources:
+  [
+    wechat,
+    alipay,
+    amap-international,
+    trip-com,
+    klook,
+    china-visa-policies,
+    visit-shanghai,
+  ]
 relatedCategories: [travel, apps, living]
-draft: true
 ---
 
-I'm Chinese. I live here. Over the last few years I've watched maybe two dozen foreign friends — first-timers, mostly — land in China and run into the same six problems in the same order. The order is: phone doesn't work, then Maps doesn't work, then they can't pay for the taxi from the airport, then they realize WeChat is not optional, then they panic about the VPN they didn't install, then they discover the high-speed rail booking page they used was an aggregator and the ticket isn't real.
+I'm Chinese, and I live here. Over the past few years, I've watched about two dozen foreign friends — mostly first-timers — land in China and hit the same six problems, in exactly the same order: Their phone doesn't work. Then Maps doesn't work. Then they can't pay for the taxi from the airport. Then they realize WeChat isn't optional. Then they panic about the VPN they never installed. Then they find out the high-speed rail ticket they booked through some sketchy site isn't even real.
 
-All six are 100% preventable with about an hour of prep before the flight.
+All six are 100% avoidable with about an hour of prep before you fly.
 
-This is the list I now send people the week before they board. It assumes you're a normal traveler from a country with a passport that gets some form of [visa-free or transit-free entry](/category/travel) (which, as of 2026, is most of Europe, most of East Asia, and increasingly the Americas — [check the embassy page for your country](https://bj.china-embassy.gov.cn/eng/lsfw/zj/), the list keeps growing). It assumes you'll be here for one to four weeks, mostly tier-one cities plus maybe one short-haul flight. It does not assume you speak Mandarin.
+This is the list I now send people the week before they board. It assumes you're a regular traveler from a country that gets [visa-free or transit-free entry](/category/travel) (which, as of 2026, includes most of Europe, most of East Asia, and more of the Americas than you think — [check your embassy's page](https://bj.china-embassy.gov.cn/eng/lsfw/zj/); the list keeps growing). It assumes you'll stay 1–4 weeks, mostly in tier-one cities, maybe one short flight. It does NOT assume you speak Mandarin.
 
 ## The phone, in the order it has to happen
 
-**Before the flight, not after.** This is the single most important sentence in this essay. China's mobile ecosystem is closed enough that "I'll figure it out when I land" is the start of a bad day. Specifically:
+**Do this before the flight, not after.** That's the single most important line in this whole guide. China's mobile ecosystem is closed enough that "I'll figure it out when I land" is how bad days start. Here's what to do:
 
-**1. Install a VPN. Today, on your home Wi-Fi.** Not because China is a dystopia — most things you'll actually want as a tourist (maps, payment, food delivery, ride-hailing) work fine without one — but because Google, Gmail, Instagram, WhatsApp, and most Western news sites do not. If your job, family contact, or 2FA depends on any of those, you need a VPN that actually works inside China, installed and tested *before* you're inside China (the App Store geofences kick in the moment you connect to a Chinese network). The three with the most consistent 2026 track record are [ExpressVPN](https://www.expressvpn.com/), [NordVPN](https://nordvpn.com/), and [Astrill](https://www.astrill.com/). All paid; none guaranteed (the firewall plays cat-and-mouse), which is why the standard expat advice is **install two before you fly** and test both — if one breaks during your trip, the other is your backup. Free VPNs almost universally do not work here.
+**1. Install a VPN today, on your home Wi-Fi.** Not because China is some dystopia — most tourist stuff (maps, payments, food delivery, rides) works fine without one — but because Google, Gmail, Instagram, WhatsApp, and most Western news sites don't. If your job, family, or 2FA depends on any of those, you need a VPN that actually works inside China. Install and test it _before_ you arrive (the App Store blocks VPNs the second you connect to a Chinese network). The three most reliable in 2026 are [ExpressVPN](https://www.expressvpn.com/), [NordVPN](https://nordvpn.com/), and [Astrill](https://www.astrill.com/). All paid; none 100% guaranteed (the firewall plays cat-and-mouse). That's why expats always say: **install two before you fly** and test both. If one breaks, you've got a backup. Free VPNs? Don't waste your time.
 
-**2. Get a travel eSIM with mainland China data.** A China-mainland eSIM from [Airalo](https://www.airalo.com/), Holafly, or Nomad gets you working data the moment you land, no SIM-swap, no kiosk negotiation, no waiting for a local carrier shop to open. Important: most travel eSIMs route through Hong Kong, which means **your data is not subject to the Great Firewall and you don't need the VPN to access Google or Instagram** as long as you're on cellular. This is one of the most under-explained tricks in the genre and it changes how you should plan everything else. (Caveat: hotel Wi-Fi *is* behind the Firewall, so the VPN earns its keep there.)
+**2. Get a travel eSIM with mainland China data.** A China-mainland eSIM from [Airalo](https://www.airalo.com/), Holafly, or Nomad gives you working data the second you land — no SIM swap, no kiosk hassle, no waiting for a local carrier shop to open. Here's the secret most guides miss: most travel eSIMs route through Hong Kong, which means **your data isn't blocked by the Great Firewall**. You can access Google or Instagram on cellular without a VPN. (Hotel Wi-Fi _is_ blocked though, so the VPN still matters there.)
 
-**3. Install [WeChat](https://www.wechat.com/) and verify the account on a non-Chinese number while you're still at home.** WeChat is not optional. It is how you pay for things, how you read menus, how you book a museum slot, how the friend-of-a-friend in Chengdu sends you their location. You need an account that has passed verification before you arrive, because verification on a fresh account inside China sometimes requires a Chinese citizen to vouch, which you very likely do not have.
+**3. Install [WeChat](https://www.wechat.com/) and verify it at home.** WeChat isn't optional. It's how you pay, read menus, book museum slots, and get directions from that friend-of-a-friend in Chengdu. You need a verified account before you arrive, because fresh accounts in China sometimes require a Chinese citizen to vouch for you — and you probably don't know one yet.
 
-**4. Install [Alipay](https://global.alipay.com/) and link an international card directly.** Forget anything you read on a pre-2024 blog about "Tour Pass" — Alipay discontinued it. The current method, working since late 2023 and now mature in 2026, is to link a foreign Visa, Mastercard, JCB, Diners Club, or Discover card *directly* under **Me → Bank Cards**, with a one-time passport verification. Transactions ≤ ¥200 are free; over that, there's a ~3% foreign-card fee. No top-up, no balance to refund, no Chinese bank account needed. Set this up at home before the noodle-shop counter ambush.
+**4. Install [Alipay](https://global.alipay.com/) and link your foreign card directly.** Forget pre-2024 blogs talking about "Tour Pass" — Alipay killed that. Since late 2023 (and now totally smooth in 2026), you can link a foreign Visa, Mastercard, JCB, Diners Club, or Discover directly under **Me → Bank Cards**, with one-time passport verification. Transactions under ¥200 are free; over that, ~3% fee. No top-ups, no balance to refund, no Chinese bank account needed. Do this at home before you're standing at a noodle shop counter panicking.
 
-**5. Install [Amap (高德地图)](https://amap.com/)** — China's actual maps app. Google Maps is functional inside China only with a VPN, and even with one its data is stale and missing half the bus routes. Amap is what locals use; the international version has English UI, and it integrates with [DiDi](https://www.didiglobal.com/) for ride-hailing so you can summon a cab from the same app.
+**5. Install [Amap (Gaode Maps)](https://amap.com/)** — China's real maps app. Google Maps only works with a VPN here, and even then the data is old and missing half the bus routes. Amap is what locals use; the international version has English, and it hooks into [DiDi](https://www.didiglobal.com/) for rides so you can call a cab from the same app.
 
-That's the phone. The whole setup is about an hour and almost everyone who skips it ends up doing it at the airport on a sketchy Wi-Fi network while jet-lagged.
+That's the phone sorted. The whole setup takes about an hour. Almost everyone who skips it ends up doing it at the airport on sketchy Wi-Fi while jet-lagged. Don't be that person.
 
 ## The money, briefly
 
-The short version: **you need Alipay or WeChat Pay working before you eat your first meal here.** Cash is legal everywhere and — as of a new national regulation that took effect **February 1, 2026** — physical merchants are explicitly required to accept it. But that's a backstop, not the daily experience. In a tier-one city, drivers, food stalls, museum ticket counters, vending machines — 80%+ of daily transactions run over WeChat Pay or Alipay. The merchant is allowed to look surprised when you produce a ¥100 note.
+Short version: **get Alipay or WeChat Pay working before your first meal.** Cash is legal everywhere, and as of **February 1, 2026**, a new law says merchants _must_ accept it. But that's a backup, not daily life. In tier-one cities, 80%+ of transactions — taxis, food stalls, museum tickets, vending machines — go through WeChat or Alipay. Merchants will look confused if you pull out cash.
 
-You should still carry **500–1,000 RMB in cash** as a real-world backup for: (a) the elderly vendor who'd rather not deal with the QR, (b) a phone-dies-on-day-three scenario, (c) tipping a private tour guide. Get it at an airport ATM on arrival, not at a Western currency exchange before flying (rate's worse and you'll get ¥100 notes that street vendors can't break for a ¥4 bus fare). Ask the ATM for a mix of ¥10s, ¥20s, and ¥50s — that's the usable range.
+Still carry **¥500–1,000 in cash** for: (a) the old vendor who hates QR codes, (b) if your phone dies, (c) tipping a private guide. Get it at an airport ATM when you land, not from a Western exchange (worse rates, and you'll get ¥100 notes that street vendors can't break). Ask for ¥10s, ¥20s, and ¥50s — those are the useful ones.
 
-Tip culture: there isn't one. Don't tip taxi drivers, restaurant servers, or hotel staff. Tipping a private tour guide ~5% is appreciated but not required.
+Tipping: Don't do it for taxis, servers, or hotel staff. Tipping a private guide ~5% is nice but not required.
 
 ## Booking the actual trip
 
-A lot of foreign travelers default to Booking.com / Expedia for hotels and either don't book trains at all or use a scammy third-party site. Both are mistakes worth fixing.
+A lot of foreigners default to Booking.com/Expedia for hotels and either skip train tickets or use a sketchy third-party site. Both are mistakes.
 
-**Hotels and high-speed rail: use [Trip.com](https://www.trip.com/).** It's the international-facing arm of Ctrip, which is the actual booking layer everybody in China uses. Foreign-card friendly, English support, and — critically — it issues *real* train tickets, not a "reservation" you have to pick up at a window where no one speaks English. For high-speed rail in particular, this is non-negotiable: China's national rail booking page (12306) does not have a usable English interface and does not accept many foreign cards, so Trip.com or Klook is functionally your only option from abroad.
+**Hotels and high-speed rail: use [Trip.com](https://www.trip.com/).** It's the international arm of Ctrip, which is what everyone in China actually uses. Foreign-card friendly, English support, and — crucially — it issues _real_ train tickets, not some "reservation" you have to pick up at a window where no one speaks English. For high-speed rail, this is non-negotiable: China's official rail site (12306) has a terrible English interface and won't take most foreign cards. Trip.com or Klook is your only real option from abroad.
 
-**Tickets, museums, transfers: use [Klook](https://www.klook.com/).** Klook is the dominant Asian "activities" platform — Forbidden City timed-entry slots, Great Wall day trips, airport transfers, the high-speed train from Hong Kong to Shenzhen. Almost everything popular sells out one to three days ahead in tourist season, and Klook is the easiest English interface for booking.
+**Tickets, museums, transfers: use [Klook](https://www.klook.com/).** Klook is the go-to Asian activities platform — Forbidden City timed slots, Great Wall day trips, airport transfers, the Hong Kong-Shenzhen high-speed train. Popular stuff sells out 1–3 days ahead in tourist season, and Klook has the easiest English interface.
 
-**Domestic flights**: if you need one, book directly with the airline (China Southern, Air China, China Eastern, Spring) or through Trip.com. Avoid Western OTA aggregators for China domestic — they often misprice, miss promotional fares, and bill you in dollars at a bad rate.
+**Domestic flights**: Book directly with the airline (China Southern, Air China, China Eastern, Spring) or through Trip.com. Skip Western OTAs for China domestic — they mess up pricing, miss promotions, and bill you in dollars at bad rates.
 
-## The visa-free thing, which most English guides have wrong
+## The visa-free thing most English guides get wrong
 
-Through 2024, 2025, and into 2026, China expanded its unilateral visa-free list dramatically. As of early 2026 the list covers **50 countries** for 30-day visa-free tourism — including most of the EU, the UK (added February 17, 2026), Canada (also February 17, 2026), Australia, New Zealand, Japan, Korea, Malaysia, and a long tail of others. The list as of right now is broader than most English-language travel content reflects, because that content was written before the policy changes and quietly went stale.
+From 2024 through 2026, China expanded its visa-free list a lot. As of early 2026, **50 countries** get 30-day visa-free tourism — including most of the EU, the UK (added Feb 17, 2026), Canada (also Feb 17), Australia, New Zealand, Japan, Korea, Malaysia, and more. Most English travel content is out of date because it was written before these changes.
 
-A few things to know:
+A few key points:
 
-- The policy is **currently set to expire December 31, 2026** for most countries (Russia: September 14, 2026). It's been extended once already; whether it's extended again is a 2026-Q4 story.
-- You still need a passport, a confirmed first-night hotel, and onward-travel proof on entry — border officers check.
-- **Extensions are not permitted** under the visa-free regime. Plan your itinerary inside the 30-day window. Overstaying by even a day carries fines of up to ¥10,000 per day.
-- The authoritative source is the [National Immigration Administration list](https://en.nia.gov.cn/n147418/n147463/c183390/content.html). If you do still need a visa, the process has also gotten faster (most countries: 4–7 business days, no in-person interview for standard tourist visas).
+- The policy **expires Dec 31, 2026** for most countries (Russia: Sep 14, 2026). It's been extended once already; whether it gets extended again is a late-2026 question.
+- You still need a passport, confirmed first-night hotel, and onward travel proof — border officers check.
+- **No extensions allowed** under visa-free. Plan your trip within 30 days. Overstaying even one day can cost ¥10,000 per day.
+- Check the [National Immigration Administration list](https://en.nia.gov.cn/n147418/n147463/c183390/content.html) for the latest. If you do need a visa, it's faster now (4–7 business days for most countries, no in-person interview for tourist visas).
 
-## The small things foreigners get wrong
+## Small things foreigners mess up
 
-A grab bag, in no order:
+A few random tips, no particular order:
 
-**Tap water**: don't drink it. Hotels and most restaurants serve hot water (热水) — it's a cultural default, not a remedy. Asking for ice water is a slightly weird request and may not be available; cold bottled water is universal and cheap.
+**Tap water**: Don't drink it. Hotels and restaurants serve hot water (热水) — it's normal, not a remedy. Asking for ice water is weird and may not be available; cold bottled water is cheap everywhere.
 
-**Restaurant menus**: in 2026, almost every restaurant past a certain price point uses a QR-code menu (you scan, order, and pay through WeChat or Alipay). This is where having WeChat/Alipay set up before arrival pays off three times a day.
+**Restaurant menus**: In 2026, almost every restaurant uses QR code menus. You scan, order, and pay through WeChat/Alipay. This is why setting those up before arrival pays off three times a day.
 
-**The bow vs the handshake**: don't bow. That's Japan. A handshake is fine; a slight nod is fine; *forcing* either is unnecessary. With older or more traditional people, two hands when receiving a business card or gift reads as polite.
+**Bow vs handshake**: Don't bow — that's Japan. A handshake or slight nod is fine. With older people, use two hands when receiving a business card or gift — it reads as polite.
 
-**Taking photos of people**: ask. The cultural norm has shifted in the last five years toward stronger privacy expectations, especially in smaller towns, and the "candid street photography" approach that was acceptable in 2015 is increasingly not.
+**Taking photos of people**: Ask first. Privacy norms have shifted in the last five years, especially in smaller towns. The "candid street photography" thing that worked in 2015? Not so much now.
 
-**The "do you have an English menu" reflex**: many places do (especially in Shanghai, Beijing, and tourist Chengdu), but the food at the top of the English menu is rarely the food you came to eat. Photo menus are everywhere; point at the table next to you; let the auntie at the counter pick for you. The best meals on every foreigner's trip are the ones where they gave up trying to read the menu.
+**The "do you have an English menu" reflex**: Many places do (especially Shanghai, Beijing, touristy Chengdu), but the English menu usually lists the boring stuff. Photo menus are everywhere — point at what the table next to you is eating, or let the counter auntie pick. The best meals are always the ones where you stop trying to read.
 
-**The visa-on-arrival assumption**: even with the new visa-free regime, you cannot just show up. You must have onward travel proof, a confirmed hotel for the first night, and (for most visa-free routes) a return ticket within the visa-free window. Border officers will check.
+**Visa-on-arrival assumption**: Even with visa-free, you can't just show up. You need onward travel proof, confirmed first-night hotel, and (for most visa-free) a return ticket within 30 days. Border officers check.
 
-## What to set up the night before you fly
+## The night before you fly: Do these 5 things
 
-If you only do five things from this entire essay, do these, in this order:
+If you only do five things from this entire guide, make it these:
 
-1. **Install and test a paid VPN at home.** Verify it connects.
-2. **Buy and activate a China-mainland eSIM** ([Airalo](https://www.airalo.com/) or equivalent). Don't enable it until you land.
-3. **Install [WeChat](https://www.wechat.com/) and [Alipay](https://global.alipay.com/).** Verify both. Set up Alipay Tour Pass with your foreign card.
+1. **Install and test a paid VPN at home.** Make sure it connects.
+2. **Buy and activate a China-mainland eSIM** ([Airalo](https://www.airalo.com/) or similar). Don't turn it on until you land.
+3. **Install [WeChat](https://www.wechat.com/) and [Alipay](https://global.alipay.com/).** Verify both. Link your foreign card to Alipay.
 4. **Install [Amap International](https://amap.com/).** Sign in.
-5. **Book your first-night hotel and your first inter-city train on [Trip.com](https://www.trip.com/)** — *before* you board the plane. Screenshot the confirmations.
+5. **Book your first-night hotel and first inter-city train on [Trip.com](https://www.trip.com/)** — _before_ boarding. Screenshot the confirmations.
 
-That's it. Everything else — temples, food, dialect-confusion, the kindness of strangers — works out on its own once the infrastructure is in place.
+That's it. Everything else — temples, food, language confusion, strangers helping you with your suitcase — works itself out once the basics are set.
 
 ## A closing note from this side of the border
 
-China in 2026 is not the country your news feed describes. It is also not the country its own tourism board describes. It is a place where the trains run on time, where strangers will help you carry a suitcase up a subway escalator, where the food is better and weirder than the version exported abroad, and where about 80% of friction is removable with one hour of phone setup before takeoff.
+China in 2026 isn't what your news feed says it is. It's also not what the tourism board says. It's a place where trains run on time, strangers help you carry luggage up subway escalators, the food is better and weirder than the version you get abroad, and 80% of the hassle disappears with one hour of phone setup before takeoff.
 
-We're glad you're coming. Set up the phone first.
+We're glad you're coming. Just set up the phone first.
 
 ---
 
-*This guide focuses on prep — for what to actually do once you're here, browse the [Travel](/category/travel), [Food](/category/food), and [Apps](/category/apps) sections. Found something out of date, or know a setup trick I missed? [Tell me](/submit) — every correction goes through editorial review, and 2026 China is still moving fast enough that this guide will need updates more than once a year.*
+_This guide focuses on prep — for what to do once you're here, check out the [Travel](/category/travel), [Food](/category/food), and [Apps](/category/apps) sections. Found something out of date, or know a setup trick I missed? [Tell me](/submit) — 2026 China moves fast, so this guide will need updates more than once a year._
